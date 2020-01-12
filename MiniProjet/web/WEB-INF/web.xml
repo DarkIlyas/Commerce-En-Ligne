@@ -18,6 +18,6 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreationCommande</servlet-name>
-        <url-pattern>/creerCommande</url-pattern>
+        <url-pattern>/creationCommande</url-pattern>
     </servlet-mapping>
 </web-app>
