@@ -47,4 +47,10 @@ form input.sansLabel {
 .info {
     font-style: italic;
     color: #E8A22B;
-}
+
+/* Menu --------------------------------------------------------------------------------------------- */
+}div #menu{
+     border: 1px solid #0568CD;
+     padding: 10px;
+     margin: 10px;
+ }

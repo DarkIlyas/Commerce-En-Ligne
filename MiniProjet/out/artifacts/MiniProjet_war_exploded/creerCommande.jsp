@@ -8,6 +8,8 @@
 </head>
 <body>
 <div>
+    <%-- Importation du menu --%>
+    <c:import url="menu.jsp"/>
     <form method="get" action="creationCommande">
         <fieldset>
             <legend>Informations client</legend>
