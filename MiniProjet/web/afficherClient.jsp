@@ -12,11 +12,13 @@
     <link type="text/css" rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class = "info">${message}</div>
-    <p>Nom : ${ client.nom }</p>
-    <p>Prénom : ${ client.prenom }</p>
-    <p>Adresse : ${ client.adresseLivraison }</p>
-    <p>Numéro de téléphone : ${ client.tel }</p>
-    <p>Email : ${ client.email }</p>
+    <div class = "info">
+        ${message}
+    </div>
+    <p><c:out value="Nom : ${ client.nom }"/></p>
+    <p><c:out value="Prénom : ${ client.prenom }"/></p>
+    <p><c:out value="Adresse : ${ client.adresseLivraison }"/></p>
+    <p><c:out value="Numéro de téléphone : ${ client.tel }"/></p>
+    <p><c:out value="Email : ${ client.email }"/></p>
 </body>
 </html>

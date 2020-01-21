@@ -12,17 +12,17 @@
 <%-- Puis affichage des données enregistrées dans le bean "commande" transmis par la servlet --%>
 <p>Client</p>
 <%-- Les 5 expressions suivantes accèdent aux propriétés du client, qui est lui-même une propriété du bean commande --%>
-<p>Nom : ${ commande.client.nom }</p>
-<p>Prénom : ${ commande.client.prenom }</p>
-<p>Adresse : ${ commande.client.adresseLivraison }</p>
-<p>Numéro de téléphone : ${ commande.client.tel }</p>
-<p>Email : ${ commande.client.email }</p>
-<p>Commande</p>
-<p>Date  : ${ commande.date }</p>
-<p>Montant  : ${ commande.montant }</p>
-<p>Mode de paiement  : ${ commande.modePaiement }</p>
-<p>Statut du paiement  : ${ commande.statutPaiement }</p>
-<p>Mode de livraison  : ${ commande.modeLivraison }</p>
-<p>Statut de la livraison  : ${ commande.statutLivraison }</p>
+<p><c:out value="Nom : ${ commande.client.nom }"/></p>
+<p><c:out value="Prénom : ${ commande.client.prenom }"/></p>
+<p><c:out value="Adresse : ${ commande.client.adresseLivraison }"/></p>
+<p><c:out value="Numéro de téléphone : ${ commande.client.tel }"/></p>
+<p><c:out value="Email : ${ commande.client.email }"/></p>
+<p><c:out value="Commande"/></p>
+<p><c:out value="Date  : ${ commande.date }"/></p>
+<p><c:out value="Montant  : ${ commande.montant }"/></p>
+<p><c:out value="Mode de paiement  : ${ commande.modePaiement }"/></p>
+<p><c:out value="Statut du paiement  : ${ commande.statutPaiement }"/></p>
+<p><c:out value="Mode de livraison  : ${ commande.modeLivraison }"/></p>
+<p><c:out value="Statut de la livraison  : ${ commande.statutLivraison }"/></p>
 </body>
 </html>
