@@ -20,8 +20,10 @@ public class CreationClient extends HttpServlet {
 
     static final String ATT_MESSAGE = "message";
     static final String ATT_CLIENT = "client";
+    static final String ATT_ERROR = "error";
 
     static final String VUE = "/afficherClient.jsp";
+
 
 
     @Override
@@ -40,11 +42,17 @@ public class CreationClient extends HttpServlet {
         newClient.setAdresseLivraison(adresse);
 
         String message;
+        boolean error;
+
         if(nom.trim().isEmpty() || adresse.trim().isEmpty() || tel.trim().isEmpty()){
             message = MESSAGE_ERREUR;
+            error = true;
         } else {
             message = MESSAGE_SUCCES;
+            error = false;
         }
+
+        req.setAttribute(ATT_ERROR,error);
         req.setAttribute(ATT_MESSAGE,message);
         req.setAttribute(ATT_CLIENT,newClient);
         req.getServletContext().getRequestDispatcher(VUE).forward(req,resp);

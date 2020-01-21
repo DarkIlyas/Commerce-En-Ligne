@@ -17,10 +17,15 @@
     <div class = "info">
         ${message}
     </div>
-    <p><c:out value="Nom : ${ client.nom }"/></p>
-    <p><c:out value="Prénom : ${ client.prenom }"/></p>
-    <p><c:out value="Adresse : ${ client.adresseLivraison }"/></p>
-    <p><c:out value="Numéro de téléphone : ${ client.tel }"/></p>
-    <p><c:out value="Email : ${ client.email }"/></p>
+
+    <c:if test="${!error}">
+            <p><c:out value="Nom : ${ client.nom }"/></p>
+            <p><c:out value="Prénom : ${ client.prenom }"/></p>
+            <p><c:out value="Adresse : ${ client.adresseLivraison }"/></p>
+            <p><c:out value="Numéro de téléphone : ${ client.tel }"/></p>
+            <p><c:out value="Email : ${ client.email }"/></p>
+    </c:if>
+
+
 </body>
 </html>

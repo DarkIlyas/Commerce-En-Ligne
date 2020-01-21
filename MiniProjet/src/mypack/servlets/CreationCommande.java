@@ -1,5 +1,6 @@
 package mypack.servlets;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import mypack.beans.Client;
 import mypack.beans.Commande;
 
@@ -25,13 +26,11 @@ public class CreationCommande extends HttpServlet {
     static final String CHAMP_STATUT_LIVRAISON = "statutLivraisonCommande";
     static final String CHAMP_MONTANT_COMMANDE = "montantCommande";
 
-    static final String ATT_MESSAGE = "message";
-    static final String ATT_CLIENT = "client";
-
     static final String VUE = "/afficherCommande.jsp";
 
-    static final String COMMANDE = "commande";
-    static final String MESSAGE = "message";
+    static final String ATT_COMMANDE = "commande";
+    static final String ATT_MESSAGE = "message";
+    static final String ATT_ERROR = "error";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -55,12 +54,15 @@ public class CreationCommande extends HttpServlet {
         String statutLivraison = req.getParameter(CHAMP_STATUT_LIVRAISON);
 
         String message;
+        boolean error;
 
         if ( nom.trim().isEmpty() || adresse.trim().isEmpty() || tel.trim().isEmpty() || montant == -1
                 || modePaiement.isEmpty() || modeLivraison.isEmpty() ) {
             message = MESSAGE_ERREUR;
+            error = false;
         } else {
             message = MESSAGE_SUCCES;
+            error = true;
         }
 
         Client client = new Client();
@@ -80,8 +82,9 @@ public class CreationCommande extends HttpServlet {
         commande.setStatutLivraison( statutLivraison );
 
         /* Ajout du bean et du message à l'objet requête */
-        req.setAttribute( COMMANDE, commande );
-        req.setAttribute( MESSAGE, message );
+        req.setAttribute( ATT_COMMANDE, commande );
+        req.setAttribute( ATT_MESSAGE, message );
+        req.setAttribute(ATT_ERROR,error);
 
         /* Transmission à la page JSP en charge de l'affichage des données */
         this.getServletContext().getRequestDispatcher(VUE).forward( req, resp );
