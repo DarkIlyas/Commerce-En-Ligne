@@ -19,7 +19,7 @@
     </servlet>
     <servlet>
         <servlet-name>Inscription</servlet-name>
-        <servlet-class>mypack.servlets.Inscription</servlet-class>
+        <servlet-class>insc.servlets.Inscription</servlet-class>
     </servlet>
 
     <servlet-mapping>

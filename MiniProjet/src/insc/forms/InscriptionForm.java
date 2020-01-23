@@ -51,7 +51,7 @@ public final class InscriptionForm {
         } catch (Exception e){
             setError(CHAMP_EMAIL,e.getMessage());
         }
-        user.getEmail();
+        user.setEmail(email);
 
         if(erreurs.isEmpty()){
             resultat = "Succés de l'inscription";
@@ -97,7 +97,7 @@ public final class InscriptionForm {
     private String getValeurChamp(HttpServletRequest request,String nomChamp){
         String valeur = request.getParameter(nomChamp);
         if(valeur == null || valeur.trim().length() == 0){
-            return valeur = null;
+            return null;
         } else {
             return valeur.trim();
         }

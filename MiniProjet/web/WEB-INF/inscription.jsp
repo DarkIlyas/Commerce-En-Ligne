@@ -23,14 +23,14 @@
         <%-- j'ai ajouté la balise c:out dans la valeur d'input pour raison de protection contre les failles XSS --%>
 
         <label for="email">Adresse email <span class="requis">*</span></label>
-        <input type="text" id="email" name="email" value="<c:out value="${param.email}" />" size="20" maxlength="60" />
-        <span class="erreur">${erreurs['email']}</span>
+        <input type="text" id="email" name="email" value="<c:out value="${user.getEmail()}" />" size="20" maxlength="60" />
+        <span class="erreur">${form.getErreurs()['email']}</span>
         <br />
 
 
         <label for="motdepasse">Mot de passe <span class="requis">*</span></label>
         <input type="password" id="motdepasse" name="motdepasse" value="" size="20" maxlength="20" />
-        <span class="erreur">${erreurs['motdepasse']}</span>
+        <span class="erreur">${form.getErreurs()['motdepasse']}</span>
         <br />
 
         <label for="confirmation">Confirmation du mot de passe <span class="requis">*</span></label>
@@ -38,13 +38,13 @@
         <br />
 
         <label for="nom">Nom d'utilisateur</label>
-        <input type="text" id="nom" name="nom" value="<c:out value="${param.nom}" />" size="20" maxlength="20" />
-        <span class="erreur">${erreurs['nom']}</span>
+        <input type="text" id="nom" name="nom" value="<c:out value="${user.getNom()}" />" size="20" maxlength="20" />
+        <span class="erreur">${form.getErreurs()['nom']}</span>
         <br />
 
         <input type="submit" value="Inscription" class="sansLabel" />
         <br />
-        <div class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</div>
+        <div class="${empty form.getErreurs() ? 'succes' : 'erreur'}">${form.getResultat()}</div>
 
     </fieldset>
 </form>
