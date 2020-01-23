@@ -54,6 +54,15 @@ public class Inscription extends HttpServlet {
             erreurs.put(CHAMP_EMAIL,e.getMessage());
         }
 
+        if(erreurs.isEmpty()){
+            resultat = "Succés de l'inscription";
+        } else {
+            resultat = "Echec de l'inscription";
+        }
+
+        req.setAttribute(ATT_ERREURS,erreurs);
+        req.setAttribute(ATT_RESULTAT,resultat);
+
         /*req.setAttribute(ATT_NOM,nom);
         req.setAttribute(ATT_MOT_DE_PASSE,motDePasse);
         req.setAttribute(ATT_CONFIRMATION,confirmation);
