@@ -21,7 +21,7 @@ public class Inscription extends HttpServlet {
     static final String ATT_ERREURS = "erreurs";
     static final String ATT_RESULTAT = "resultat";
 
-    final static String VUE = "/WEB-INF/inscription";
+    final static String VUE = "/WEB-INF/inscription.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class Inscription extends HttpServlet {
         try {
             validationNom(nom);
         } catch (Exception e){
-            erreurs.put(CHAMP_EMAIL,e.getMessage());
+            erreurs.put(CHAMP_NOM,e.getMessage());
             }
         try {
             validationMotDePasse(motDePasse, confirmation);
@@ -62,6 +62,8 @@ public class Inscription extends HttpServlet {
 
         req.setAttribute(ATT_ERREURS,erreurs);
         req.setAttribute(ATT_RESULTAT,resultat);
+
+        this.getServletContext().getRequestDispatcher(VUE).forward(req,resp);
 
         /*req.setAttribute(ATT_NOM,nom);
         req.setAttribute(ATT_MOT_DE_PASSE,motDePasse);

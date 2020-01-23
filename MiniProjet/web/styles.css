@@ -54,3 +54,7 @@ form input.sansLabel {
      padding: 10px;
      margin: 10px;
  }
+
+form .erreur {
+    color: #900;
+}
