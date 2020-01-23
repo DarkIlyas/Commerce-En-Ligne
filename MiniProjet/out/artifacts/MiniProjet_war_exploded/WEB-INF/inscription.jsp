@@ -20,8 +20,10 @@
         <legend>Inscription</legend>
         <p>Vous pouvez vous inscrire via ce formulaire.</p>
 
+        <%-- j'ai ajouté la balise c:out dans la valeur d'input pour raison de protection contre les failles XSS --%>
+
         <label for="email">Adresse email <span class="requis">*</span></label>
-        <input type="text" id="email" name="email" value="" size="20" maxlength="60" />
+        <input type="text" id="email" name="email" value="<c:out value="${param.email}" />" size="20" maxlength="60" />
         <span class="erreur">${erreurs['email']}</span>
         <br />
 
@@ -36,12 +38,14 @@
         <br />
 
         <label for="nom">Nom d'utilisateur</label>
-        <input type="text" id="nom" name="nom" value="" size="20" maxlength="20" />
+        <input type="text" id="nom" name="nom" value="<c:out value="${param.nom}" />" size="20" maxlength="20" />
         <span class="erreur">${erreurs['nom']}</span>
         <br />
 
         <input type="submit" value="Inscription" class="sansLabel" />
         <br />
+        <div class="${empty erreurs ? 'succes' : 'erreur'}">${resultat}</div>
+
     </fieldset>
 </form>
 </body>
