@@ -1,6 +1,7 @@
 package mypack.servlets;
 
 import mypack.beans.Client;
+import mypack.forms.ClientForm;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,53 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class CreationClient extends HttpServlet {
-    static final String MESSAGE_ERREUR = "Erreur - vous n'avez pas rempli tous les champs obligatoires <br> <a href='/creerClient.jsp'>Cliquez-ici</a> pour revenir remplir le formulaire";
-    static final String MESSAGE_SUCCES ="Client créé avec succès !<br>";
-
-    static final String CHAMP_NOM = "nomClient";
-    static final String CHAMP_PRENOM = "prenomClient";
-    static final String CHAMP_ADRESSE = "adresseClient";
-    static final String CHAMP_TEL = "telephoneClient";
-    static final String CHAMP_EMAIL = "emailClient";
-
-    static final String ATT_MESSAGE = "message";
+    static final String ATT_FORM = "form";
     static final String ATT_CLIENT = "client";
-    static final String ATT_ERROR = "error";
 
-    static final String VUE = "/afficherClient.jsp";
-
-
+    static final String VUE_CREATION = "/WEB-INF/creerClient.jsp";
+    static final String VUE_AFFICHAGE = "/WEB-INF/afficherClient.jsp";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher(VUE_CREATION).forward(req,resp);
+    }
 
-        String nom = req.getParameter(CHAMP_NOM);
-        String prenom = req.getParameter(CHAMP_PRENOM);
-        String adresse = req.getParameter(CHAMP_ADRESSE);
-        String tel = req.getParameter(CHAMP_TEL);
-        String email = req.getParameter(CHAMP_EMAIL);
-        Client newClient = new Client();
-        newClient.setNom(nom);
-        newClient.setPrenom(prenom);
-        newClient.setEmail(email);
-        newClient.setTel(tel);
-        newClient.setAdresseLivraison(adresse);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String message;
-        boolean error;
+        ClientForm form = new ClientForm();
+        Client client = form.creerClient(req);
+        req.setAttribute(ATT_FORM,form);
+        req.setAttribute(ATT_CLIENT,client);
 
-        if(nom.trim().isEmpty() || adresse.trim().isEmpty() || tel.trim().isEmpty()){
-            message = MESSAGE_ERREUR;
-            error = true;
-        } else {
-            message = MESSAGE_SUCCES;
-            error = false;
+        if(!form.getErreurs().isEmpty()){
+            req.getServletContext().getRequestDispatcher(VUE_CREATION).forward(req,resp);
+        }else {
+            req.getServletContext().getRequestDispatcher(VUE_AFFICHAGE).forward(req,resp);
         }
 
-        req.setAttribute(ATT_ERROR,error);
-        req.setAttribute(ATT_MESSAGE,message);
-        req.setAttribute(ATT_CLIENT,newClient);
-        req.getServletContext().getRequestDispatcher(VUE).forward(req,resp);
 
     }
 }
