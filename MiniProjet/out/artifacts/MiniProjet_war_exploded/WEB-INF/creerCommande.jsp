@@ -11,6 +11,7 @@
     <c:import url="../menu.jsp"/>
     <div>
         <form method="post" action="<c:url value='/creationCommande'/>">
+            <c:set var="client" value='${commande.client}' scope="request"/>
             <fieldset>
                 <legend>Informations client</legend>
                 <c:import url="/formulaireClient.jsp"/>
