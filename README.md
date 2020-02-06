@@ -33,6 +33,12 @@ C'est un mini projet JEE
 **Objectifs :** 
 
   -Utiliser les filtres pour créer un espace membre
+  
+   ## Etape 6
+
+**Objectifs :** 
+
+  -Ajouter la connexion à une SGBDR (MySQL) en implémentant le pattern DAO
 
 
 
